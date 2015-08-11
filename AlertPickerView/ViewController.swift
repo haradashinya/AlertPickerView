@@ -10,7 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,AlertPickerViewDelegate,UIPickerViewDelegate {
     var pickerView: AlertPickerView!
-    let array = ["apple","orange"]
+    let array = ["foo","bar","baz"]
 
 
     override func viewDidLoad() {
