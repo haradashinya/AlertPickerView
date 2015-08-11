@@ -20,6 +20,7 @@ class AlertPickerView: UIView {
     let heightOfToolbar:CGFloat = 44
     var backgroundColorOfPickerView  = UIColor.whiteColor()
     var textColorOfPickerView = UIColor.blackColor()
+    var textColorOfToolBar = UIColor.darkGrayColor()
 
     var delegate: AlertPickerViewDelegate? {
         didSet {
@@ -50,13 +51,14 @@ class AlertPickerView: UIView {
         pickerView.showsSelectionIndicator = true
         pickerView.backgroundColor = UIColor.whiteColor()
 
-        self.bounds = CGRectMake(0, 0, screenSize.width, self.heightOfPickerView + self.heightOfToolbar)
         self.frame = CGRectMake(0, screenSize.height, screenSize.width, self.heightOfPickerView + self.heightOfToolbar)
 
+        //pickerToolbar
         pickerToolbar.frame = CGRectMake(0, 0, screenSize.width, self.heightOfToolbar)
         pickerToolbar.barTintColor = backgroundColorOfPickerView
 
-        pickerView.frame = CGRectMake(0, 44, screenSize.width, self.heightOfPickerView)
+        //pickerView
+        pickerView.frame = CGRectMake(0,self.heightOfToolbar, screenSize.width, self.heightOfPickerView)
         pickerView.backgroundColor = backgroundColorOfPickerView
 
         let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
@@ -67,6 +69,7 @@ class AlertPickerView: UIView {
         toolbarItems! += [space, cancelItem, flexSpaceItem, doneButtonItem, space]
 
         pickerToolbar.setItems(toolbarItems, animated: false)
+        pickerToolbar.tintColor = self.textColorOfToolBar
 
         self.addSubview(pickerToolbar)
         self.addSubview(pickerView)
@@ -88,7 +91,6 @@ class AlertPickerView: UIView {
     }
     func cancelPicker() {
         hidePicker()
-
         restoreSelectedRows()
         selectedRows = nil
     }
@@ -128,11 +130,7 @@ protocol AlertPickerViewDelegate: UIPickerViewDelegate {
     optional func pickerViewDidSHow(pickerView: UIPickerView)
     optional func pickerViewDidHide(pickerView: UIPickerView)
     optional func pickerViewWillHide(pickerView: UIPickerView)
-
     optional func pickerViewWillShow(pickerView: UIPickerView)
     optional func pickerViewDidShow(pickerView: UIPickerView)
 
-
-
-    
 }

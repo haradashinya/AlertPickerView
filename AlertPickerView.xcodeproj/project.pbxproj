@@ -39,7 +39,7 @@
 		061BEED51B798086008665C4 /* AlertPickerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlertPickerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		061BEEDA1B798086008665C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		061BEEDB1B798086008665C4 /* AlertPickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPickerViewTests.swift; sourceTree = "<group>"; };
-		061BEEE51B79809C008665C4 /* AlertPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPickerView.swift; sourceTree = "<group>"; };
+		061BEEE51B79809C008665C4 /* AlertPickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertPickerView.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +63,6 @@
 		061BEEB41B798085008665C4 = {
 			isa = PBXGroup;
 			children = (
-				061BEEE51B79809C008665C4 /* AlertPickerView.swift */,
 				061BEEBF1B798085008665C4 /* AlertPickerView */,
 				061BEED81B798086008665C4 /* AlertPickerViewTests */,
 				061BEEBE1B798085008665C4 /* Products */,
@@ -82,6 +81,7 @@
 		061BEEBF1B798085008665C4 /* AlertPickerView */ = {
 			isa = PBXGroup;
 			children = (
+				061BEEE51B79809C008665C4 /* AlertPickerView.swift */,
 				061BEEC21B798085008665C4 /* AppDelegate.swift */,
 				061BEEC71B798085008665C4 /* ViewController.swift */,
 				061BEEC91B798085008665C4 /* Main.storyboard */,
