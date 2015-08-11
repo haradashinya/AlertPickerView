@@ -1,10 +1,8 @@
 //
 //  AlertPickerView.swift
 //  AlertPickerView
-//
-//  Created by HARADASHINYA on 8/11/15.
-//  Copyright (c) 2015 HARADASHINYA. All rights reserved.
-//
+
+
 
 
 import Foundation
@@ -19,8 +17,8 @@ class AlertPickerView: UIView {
     let heightOfPickerView:CGFloat = 216
     let heightOfToolbar:CGFloat = 44
     var backgroundColorOfPickerView  = UIColor.whiteColor()
-    var textColorOfPickerView = UIColor.blackColor()
-    var textColorOfToolBar = UIColor.darkGrayColor()
+    var backgroundColorOfToolbar = UIColor.whiteColor()
+    var textColorOfToolbar = UIColor.blackColor()
 
     var delegate: AlertPickerViewDelegate? {
         didSet {
@@ -39,6 +37,7 @@ class AlertPickerView: UIView {
         initFunc()
         println("initfunc")
     }
+
     private func initFunc() {
         let screenSize = UIScreen.mainScreen().bounds.size
         self.backgroundColor = UIColor.blackColor()
@@ -49,27 +48,33 @@ class AlertPickerView: UIView {
 
         pickerToolbar.translucent = false
         pickerView.showsSelectionIndicator = true
-        pickerView.backgroundColor = UIColor.whiteColor()
+        pickerView.backgroundColor = self.backgroundColorOfPickerView
+
 
         self.frame = CGRectMake(0, screenSize.height, screenSize.width, self.heightOfPickerView + self.heightOfToolbar)
 
         //pickerToolbar
         pickerToolbar.frame = CGRectMake(0, 0, screenSize.width, self.heightOfToolbar)
-        pickerToolbar.barTintColor = backgroundColorOfPickerView
+        pickerToolbar.barTintColor = self.backgroundColorOfPickerView
 
         //pickerView
         pickerView.frame = CGRectMake(0,self.heightOfToolbar, screenSize.width, self.heightOfPickerView)
-        pickerView.backgroundColor = backgroundColorOfPickerView
+        pickerView.backgroundColor = self.backgroundColorOfPickerView
+
 
         let space = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FixedSpace, target: nil, action: nil)
         space.width = 12
+
         let cancelItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Cancel, target: self, action: "cancelPicker")
         let flexSpaceItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.FlexibleSpace, target: self, action: nil)
-        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: Selector("endPicker"))
-        toolbarItems! += [space, cancelItem, flexSpaceItem, doneButtonItem, space]
 
+        let doneButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.Done, target: self, action: Selector("endPicker"))
+
+        toolbarItems! += [space, cancelItem, flexSpaceItem, doneButtonItem, space]
         pickerToolbar.setItems(toolbarItems, animated: false)
-        pickerToolbar.tintColor = self.textColorOfToolBar
+        pickerToolbar.tintColor = self.textColorOfToolbar
+        pickerToolbar.barTintColor = self.backgroundColorOfToolbar
+
 
         self.addSubview(pickerToolbar)
         self.addSubview(pickerView)
@@ -89,6 +94,9 @@ class AlertPickerView: UIView {
         delegate?.pickerViewDidSHow?(pickerView)
         }
     }
+
+
+
     func cancelPicker() {
         hidePicker()
         restoreSelectedRows()
